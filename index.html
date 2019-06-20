@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="/res/jquery.js"></script>
+	<script type="text/javascript">
+		function se() {
+
+			alert('\n Calculador de Promedios Aproximados. \n \n \n Jun-2019 · Máximo Canedo \n \n \n ¿Cómo se hace? \n \n Para obtener el promedio' + 
+				' de un área, se divide por 3 al producto de las notas de cada trimestre. Por ejemplo, si tuviste 10, 7, y 9, harás (10 + 7 + 9)' +
+				' : 3 = 8.67 que sería tu promedio. Si antes de dividir, la suma es mayor a 21, ten por seguro que ¡Aprobaste! \n \n Si sólo ing' +
+				'resaste los datos de algunos trimestres, se te calculará la nota aproximada' +
+				' que necesitarás para tener 7 como promedio final. Las notas calculadas aquí son APROXIMADAS, porque podrían variar dependiendo' +
+				' de varios factores, como la asistencia, el comportamiento, el tipo de profesor que te toque, y la participación en clase, entr' +
+				'e otros. \n \n \n')
+		}
+		var j = {
+			f: function() {
+				var f = $('#one').val();
+
+				return $('#one').val();
+			},
+			s: function() {
+				return $('#two').val();
+			},
+			t: function() {
+				return $('#three').val();
+			}
+		}
+	$(document).ready(function() {
+if($('#first').prop('checked')) {
+	$('#one').attr('disabled', '').val('')
+} else {
+	$('#one').removeAttr('disabled').val(''); 
+}
+if($('#second').prop('checked')) {$('#two').attr('disabled', '').val('')} else {$('#two').removeAttr('disabled').val('')}
+if($('#third').prop('checked')) {$('#three').attr('disabled', '').val('')} else {$('#three').removeAttr('disabled').val('')}
+	})
+	function d() {
+		return {
+			val: function(a) {
+				$('div.g').html(a);
+			}
+		}
+	}
+function calculate(a,b,c) {
+	var r = d();
+	if(a[0] !== false && b[0] !== false && c[0] !== false) { // Todos los trimestres
+      var p =  (a[1] + b[1] + c[1]) / 3 ;
+      var num = Number(p) // The Number() only visualizes the type and is not needed
+var roudedString = num.toFixed(2);
+var p = Number(roudedString);
+    r.val(`<span class="first f"><b>` + a[1] + `</b><br /><br />Primer trimestre</span><span class="first f"><b>` + b[1] + `</b><br /><br />Segundo trimestre</span><span class="first f"><b>` + c[1] + `</b><br /><br />Tercer trimestre</span>
+<hr>
+<span class="f pr"><b>` + p + `</b><br /><br>Promedio anual</span>`);
+      if(p == 7 || p > 7) {
+      }
+      else {
+      }
+	}
+
+
+
+
+
+
+if(a[0] !== false && b[0] !== false && c[0] !== true) { // Sólo primer trimestre, y segundo.
+      var p =  21 - (a[1] + b[1]) ;
+        var num = Number(p) // The Number() only visualizes the type and is not needed
+var roudedString = num.toFixed(2);
+var p = Number(roudedString);
+      if(p == 10 || p < 10) {
+      	r.val(`
+	<span class="first f"><b>` + a[1] + `</b><br /><br />Primer trimestre</span><span class="first f"><b>` + b[1] + `</b><br /><br />Segundo trimestre</span>
+<hr>
+<span class="f pr">En el 3º trimestre: <br><b>` + p + `</b><br /><br>O más para aprobar</span>`);
+      }
+      else {
+      		r.val(`
+	<span class="first f"><b>` + a[1] + `</b><br /><br />Primer trimestre</span><span class="first f"><b>` + b[1] + `</b><br /><br />Segundo trimestre</span>
+<hr>
+<span class="f pr"> <br><b>:(</b><br /><br>Desaprobaste ésta materia!<br /><br />Necesitas más de 10...</span>`);
+      }
+
+
+
+}
+
+
+if(a[0] !== false && b[0] !== true ) { // Sólo primer trimestre.
+      var p =  21 - (a[1]) ;
+      var ee = p / 2;
+        var num = Number(ee) // The Number() only visualizes the type and is not needed
+var roudedString = num.toFixed(2);
+var ee = Number(roudedString);
+   r.val(`	<span class="first f"><b>` + a[1] + `</b><br /><br />Primer trimestre</span>
+<hr>
+<span class="f pr">En los próximos trimestres<br />Aprobarás con <br /><b>` + ee + `</b><br /><br>O más por trimestre.</span>
+`)
+}
+}
+function savoir()  {
+	var first = j.f();
+	var second = j.s();
+	var third = j.t();
+var f = [false, ""],
+    s = [false, ""],
+    t = [false, ""];
+	if(first !== "") {
+     f[0] = true;
+     f[1] = parseFloat(first);
+	}
+	if(second !== "") {
+     s[0] = true;
+     s[1] = parseFloat(second);
+	}
+	if(third !== "") {
+	 t[0] = true;
+	 t[1] = parseFloat(third);
+	}
+console.log([f,s,t]);
+    calculate(f,s,t);
+
+}
+	</script>
+</head>
+<body onload="">
+	<img src="res/f.png" class="ffg" />
+	<form action="#">
+		<div class="eeone">
+	<input type="checkbox" style="display: none;"  onchange="
+if($('#first').prop('checked')) {$('#one').attr('disabled', '').val('')} else {$('#one').removeAttr('disabled').val('')}" id="first" name="first_is_checked" />
+	<label for="firskt">Nota del 1º trimestre</label><br>
+<input type="number" id="one" max="10"  name="">
+</div>
+	
+<div class="eeone">
+	<input type="checkbox" onchange="
+if($('#second').prop('checked')) {$('#two').attr('disabled', '').val('')} else {$('#two').removeAttr('disabled').val('')}" id="second" name="second_is_checked" />
+	<label for="second">No tengo la nota del 2º trimestre</label><br>
+	<input type="number" id="two" name="" max="10" disabled >
+	</div>
+
+<div class="eeone">
+	<input type="checkbox"  onchange="
+if($('#third').prop('checked')) {$('#three').attr('disabled', '').val('')} else {$('#three').removeAttr('disabled').val('')}" id="third" name="second_is_checked" />
+	<label for="third">No tengo la nota del 3º trimestre</label><br>
+	<input type="number" id="three" max="10" disabled  name="">
+	</div>
+    </form>
+    <button onclick="savoir()" class="conaitre">Conocer mi nota</button>
+    <button onclick="se()" class="conaitre more">Detalles</button>
+   
+    <div class="g" style="width: 100%; height: auto; font-family: Roboto, Verdana, 'Segoe UI', sans-serif;">
+   <p><b>Calculador de promedios</b><br /><br/>
+Sólo escribe arriba tus notas del 1, 2 y 3er trimestre para conocer tu promedio aproximado.
+<br />
+<br />
+Si tenés las notas del 1ro y segundo trimestres y querés saber qué nota sacar para aprobar (apróx.) una materia, haz click en "No tengo la nota del 3º trimestre". Lo mismo si no tenés la nota del segundo.
+
+<br /><br />
+<br />
+   </p>
+    </div>
+</body>
+</html>
+<style type="text/css">
+	@import url(/music/colors.css);
+	@import url(/music/material.css);
+	.eeone {
+		background: rgba(250,250,250,0.67);
+		border-radius: 4px;
+		box-shadow: var(--shadow-4dp);
+		padding: 10px;
+		font-family: Roboto, Verdana, 'Segoe UI';
+		margin-top: 10px;
+		box-sizing: border-box;
+		width: 100%;
+		height: 100px;
+
+	}
+	body {
+		background: var(--grey-900);
+	}
+	.ffg {
+		position: fixed;
+		top: -10px;
+		right: -10px;
+		width: auto;
+		height: auto;
+		min-height: 110%;
+		filter: blur(4px);
+		min-width: 150%;
+		z-index: -1;
+		opacity: 0.7;
+
+	}
+	::-webkit-scrollbar {width: 0px;}
+	.eeone input[type="number"] {
+		margin-top: 10px;
+        text-align: center;
+        font-size: 25px;
+
+        background: rgba(40,40,40,0.2);
+        border: none; outline: none;
+        font-weight: bold;
+		font-family: Roboto, Verdana, 'Segoe UI';
+		padding-top: 10px;
+		border-radius: 8px;
+
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		width: calc(100% - 20px);
+		position: relative;
+		top: 0px;
+		left: calc(50% - 40px);
+		width: 80px;
+
+
+	}
+	.eeone input[type="checkbox"] {
+
+	}
+
+	.f {
+		text-align: center;
+		padding-bottom: 5px;
+		padding-top: 12px;
+		padding-left: 10px; 
+		padding-right: 10px;
+		border-radius: 5px;
+		position: relative;
+		display: inline-block;
+		width: 120px;
+		font-size: 12px;
+		min-height: 80px;
+		margin-top: 10px;
+		margin-left: 10px;
+		font-family: Roboto, Verdana, 'Segoe UI';
+	}
+	.f b {
+		font-size: 28px;
+
+		padding-bottom: 20px;
+	}
+	.first {
+
+		background: rgba(230,230,230,0.4);
+		color: var(--blue-100);
+	}
+	.sec {
+
+		background: #ffffaa;
+		color: #efef65;
+	}
+	.thr {
+
+		background: #ffbbbb;
+		color: #ff5665;
+	}
+	.pr {
+		background: white;
+		color: #110000;
+	}
+	.g b {color: white;}
+	.pr b {color: black;}
+	.conaitre {
+		background: var(--blue-600);
+		text-transform: uppercase;
+		font-family: Roboto, Verdana, 'Segoe UI';
+		border-radius: 3.4px;
+		border: none; outline: none;
+		padding: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 12px;
+		padding-bottom: 12px;
+		margin-top: 10px;
+
+		font-weight: 500;
+		color: white;
+		float: center;
+
+	}
+	.conaitre.more {
+		background: rgba(4,4,4,0.49);
+		color: white;
+		margin-left: 5px;
+
+	}
+	.g {
+		border-radius: 3px;
+		box-sizing: border-box;
+		padding: 20px;
+		margin-top: 10px;
+		color: white;
+		color: var(--grey-400);
+		background: -webkit-linear-gradient(190deg, rgba(5,5,5,0.5), rgba(0,0,0,0.4));
+	}
+</style>
